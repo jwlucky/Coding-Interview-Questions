@@ -1,0 +1,15 @@
+class Solution:
+    def twoSum(self, nums, target):
+        nums = []
+        for i,j in len(nums):
+            if nums[i] + nums[j] == target:
+                print(nums[i], nums[j])
+            elif num[i] + num[j] != target:
+                print('No Pairs Exist')
+                
+nums = [0,7,2,15]
+target = 9
+
+twoSum(nums, target)
+
+output: [1, 2]
