@@ -1,0 +1,18 @@
+class Solution:
+    
+
+    def reverseVowels(self, s: str) -> str:
+        VOWELS = ['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U']
+        s_new = list(s)
+        vowels = []
+        indexes = []        
+
+        for index, letter in enumerate(s_new):
+            if letter in VOWELS:
+                vowels.append(letter)
+                indexes.append(index)
+
+        for i, char in zip(indexes, reversed(vowels)):
+            s_new[i] = char
+
+        return ''.join(s_new)        
