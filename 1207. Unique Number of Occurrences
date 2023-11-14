@@ -1,0 +1,9 @@
+class Solution:
+    from collections import Counter
+    def uniqueOccurrences(self, arr: List[int]) -> bool:
+        s=Counter(arr)
+
+        if (len(set(arr))==len(set(s.values()))) :
+            return True
+        else:
+            return False
