@@ -1,0 +1,5 @@
+class Solution:
+    def reverseBits(self, n: int) -> int:
+        return int("{:032b}".format(n)[::-1],2)
+        # "{:032b}".format(n) will convert the given 32bit unsigned integer to binary format retaining the the leadings 0's
+        # [::-1] will reverse our binary output(string) and int(number,2) will convert the reversed binary representation back to an integer.
