@@ -1,0 +1,23 @@
+Solution 1:
+
+class Solution:
+    def canConstruct(self, ransomNote: str, magazine: str) -> bool:
+        for letters in ransomNote:
+            if magazine.find(letters) != -1: 
+            # The find() method finds the first occurrence of the specified value.
+            #The find() method returns -1 if the value is not found.
+                magazine = magazine.replace(letters, '', 1)
+                # .replace() string.replace(oldvalue, newvalue, count)
+            else:
+                return False
+        return True
+
+Solution 2:
+
+class Solution:
+    def canConstruct(self, ransomNote: str, magazine: str) -> bool:
+
+        st1, st2 = Counter(ransomNote), Counter(magazine)
+        if st1 & st2 == st1:
+            return True
+        return False
