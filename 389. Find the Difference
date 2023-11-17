@@ -1,0 +1,10 @@
+class Solution:
+    def findTheDifference(self, s: str, t: str) -> str:
+
+        if set(s)!= set(t):
+            letter = set(s).symmetric_difference(set(t))
+            return list(letter)[0]
+        else:
+            for letters in t:
+                if t.count(letters) > s.count(letters):
+                    return (letters)
