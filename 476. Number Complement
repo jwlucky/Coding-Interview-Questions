@@ -1,0 +1,21 @@
+class Solution:
+    def findComplement(self, num: int) -> int:
+        # convert int num to binary but remove '0b'
+        num_bin = bin(num)[2::]
+        # convert to string
+        bin_str = str(num_bin)
+        # create dictionary, 0 = 1 and 1 = 0
+        bin_dict = {'0': '1', '1': '0'}
+
+        convert_bin = []
+        for i in bin_str:
+            # change 0 to 1, 1 to 0
+            convert_bin.append(bin_dict[i])
+        # change back to string
+        v = ''.join(convert_bin)
+        # convert back to int
+        b = int(v,2)
+        # return the result     
+        return b
+            
+
