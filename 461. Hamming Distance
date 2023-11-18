@@ -1,0 +1,14 @@
+class Solution:
+    def hammingDistance(self, x: int, y: int) -> int:
+        # Fill the string with leading zeros until it is xx characters long
+        x_bin = bin(x)[2:].zfill(31)
+        y_bin = bin(y)[2:].zfill(31)
+
+        x_list = list(x_bin)
+        y_list = list(y_bin)
+        cnt = 0
+        for i in range(len(x_list)):
+            if x_list[i] !=  y_list[i]:
+                cnt += 1
+        return cnt
+        
