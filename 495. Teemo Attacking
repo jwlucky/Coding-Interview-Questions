@@ -1,0 +1,12 @@
+# Solution 1
+# Memory Limit Exceeded
+class Solution:
+    def findPoisonedDuration(self, timeSeries: List[int], duration: int) -> int:
+        seconds = 0
+        total = []
+        for i in range(len(timeSeries)):
+            for j in range(duration):
+                seconds = timeSeries[i] + j 
+                total.append(seconds)
+        return len(set(total))
+            
