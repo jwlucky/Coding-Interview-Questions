@@ -26,3 +26,23 @@ class Solution:
             if flag == 0:
                 output.append(temp)
         return output 
+
+
+# Solution 2:
+class Solution:
+    def findWords(self, words: List[str]) -> List[str]:  
+        row1 = set('qwertyuiop')
+        row2 = set('asdfghjkl')
+        row3 = set('zxcvbnm')
+        
+        result = []
+        
+        for word in words:
+            count1 = sum(1 for w in word.lower() if w in row1)
+            count2 = sum(1 for w in word.lower() if w in row2)
+            count3 = sum(1 for w in word.lower() if w in row3)
+            
+            if count1 == len(word) or count2 == len(word) or count3 == len(word):
+                result.append(word)
+        
+        return result
