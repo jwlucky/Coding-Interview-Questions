@@ -1,0 +1,28 @@
+class Solution:
+    def findWords(self, words: List[str]) -> List[str]:  
+
+        k1 = list("qwertyuiop")
+        k2 = list("asdfghjkl")
+        k3 = list("zxcvbnm")
+
+        output = [] 
+
+        for word in words:
+            flag = 0
+            temp = word
+            word = word.lower()
+
+            if word[0] in k1:
+                res_keys = k1
+            elif word[0] in k2:
+                res_keys = k2
+            else:
+                res_keys = k3
+
+            for i in range(len(word)):
+                if word[i] not in res_keys:
+                    flag = 1
+                    break                
+            if flag == 0:
+                output.append(temp)
+        return output 
