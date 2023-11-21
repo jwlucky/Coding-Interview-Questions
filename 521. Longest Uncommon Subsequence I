@@ -1,3 +1,4 @@
+# my solution
 class Solution:
     def findLUSlength(self, a: str, b: str) -> int:
         if a == b:
@@ -6,7 +7,8 @@ class Solution:
             return len(a)
         elif a != b and len(a) != len(b):
             return max(len(a), len(b))
-        
+
+# can simply code like this:
 class Solution:
     def findLUSlength(self, a: str, b: str) -> int:
         if a==b:
