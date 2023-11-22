@@ -1,0 +1,18 @@
+class Solution:
+    def findLHS(self, nums: List[int]) -> int:
+        """
+        Finds the length of the longest harmonious subsequence in the given array.
+        Returns the length of the longest harmonious subsequence.
+        
+        Time Complexity: O(n)
+        Space Complexity: O(n)
+        """
+        ans = 0
+        counter = Counter(nums)
+        
+        # Iterate through the elements and find the length of the longest harmonious subsequence
+        for num, freq in counter.items():
+            if num + 1 in counter:
+                ans = max(ans, freq + counter[num + 1])
+        
+        return ans
