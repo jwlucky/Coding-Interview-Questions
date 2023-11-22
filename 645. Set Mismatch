@@ -1,0 +1,14 @@
+# Solution 1
+# 2806 ms
+class Solution:
+    def findErrorNums(self, nums: List[int]) -> List[int]:
+
+        m = []
+        for i in range(1, len(nums)+1):
+            m.append(i)
+        
+        set_dif = list(set(nums).symmetric_difference(set(m)))
+
+        for num in nums:
+            if nums.count(num) == 2:
+                return num, set_dif[0]
