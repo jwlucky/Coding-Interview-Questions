@@ -1,0 +1,11 @@
+class Solution:
+    def hasAlternatingBits(self, n: int) -> bool:
+        m = bin(n)[2::]
+
+        m_l = list(m)
+        prev = m_l[0]
+        for i in range(1, len(m_l)):
+            if m_l[i] == prev:
+                return False
+            prev = m_l[i]
+        return True
