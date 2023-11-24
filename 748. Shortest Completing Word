@@ -1,0 +1,11 @@
+class Solution:
+    def shortestCompletingWord(self, licensePlate: str, words: List[str]) -> str:
+        lp = ''.join((x for x in licensePlate if not x.isdigit())).replace(' ', '').lower()
+        # .isaplha() can also work    
+        words = sorted(words, key = len)
+        for word in words:
+            for i in range(len(lp)):
+                if word.count(lp[i]) < lp.count(lp[i]):
+                    break
+                if i == len(lp)-1: # i is the last letter of lp, which means it reaches to the end
+                    return word
