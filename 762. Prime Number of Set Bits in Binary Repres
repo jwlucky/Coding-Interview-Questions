@@ -1,0 +1,60 @@
+# Solution 1:
+import math
+class Solution:
+    def countPrimeSetBits(self, left: int, right: int) -> int:
+
+        def isPrime(n):
+            if n < 2:
+                return False
+            if n == 2:
+                return True
+            if n % 2 == 0:
+                return False
+            for i in range(3, int(n**0.5)+1, 2):
+                if n % i == 0:
+                    return False
+            return True
+
+        numbers = []
+        for i in range(left, right+1):
+            i = bin(i)[2:].count('1')
+            numbers.append(i)
+
+        count = 0
+        for num in numbers:
+            if isPrime(num):
+                count += 1
+        return count
+
+# Solution 2:
+import math
+class Solution:
+    def countPrimeSetBits(self, left: int, right: int) -> int:
+
+        primes = [2, 3, 5, 7, 11, 13, 17, 19]
+
+        numbers = []
+        for i in range(left, right+1):
+            i = bin(i)[2:].count('1')
+            numbers.append(i)
+
+        count = 0
+        for num in numbers:
+            if num in primes:
+                count += 1
+        return count
+# Solution 3:
+class Solution:
+    def countPrimeSetBits(self, left: int, right: int) -> int:
+
+        primes = {2, 3, 5, 7, 11, 13, 17, 19}
+        count = 0
+
+        for num in range(left, right+1):
+
+            set_bits = num.bit_count()
+
+            if set_bits in primes:
+                count += 1
+
+        return count
