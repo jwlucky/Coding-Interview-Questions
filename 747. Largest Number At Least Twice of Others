@@ -1,0 +1,9 @@
+class Solution:
+    def dominantIndex(self, nums: List[int]) -> int:
+        s_nums = sorted(nums)
+        
+        if s_nums[-1] >= 2 * s_nums[-2]:
+            return nums.index(s_nums[-1])
+        else:
+            return -1
+        
