@@ -1,0 +1,26 @@
+class Solution:
+    def mostCommonWord(self, paragraph: str, banned: List[str]) -> str:
+        
+        # going to populate set with O(1) lookup time in comparison to O(n)
+        banned = set(banned)
+            
+        # purge all symbols
+        for i in "!?',;.":
+            paragraph = paragraph.replace(i, " ")
+    
+        words = {}
+        # two choices here:
+        #   .split()      O(n) space
+        #   two pointers  O(1) space
+        # we can try and attempt better run time using split, at the expense of having O(n + b) aux space
+        
+        paragraph = paragraph.lower().split()
+        
+        for word in paragraph:            
+            if word not in banned:
+                if word in words:
+                    words[word]+=1
+                else:
+                    words[word]=1
+        
+        return max(words, key=words.get)
