@@ -1,0 +1,25 @@
+# Solution 1:
+class Solution:
+    def numJewelsInStones(self, jewels: str, stones: str) -> int:
+
+        count = 0        
+        for c in jewels:
+            for d in stones:
+                if c == d:
+                    count+=1
+        return count
+
+# Solution 2:
+class Solution:
+    def numJewelsInStones(self, jewels: str, stones: str) -> int:
+        return sum(s in jewels for s in stones)
+
+# Solution 3:
+class Solution:
+    def numJewelsInStones(self, jewels: str, stones: str) -> int:
+        # return sum(s in jewels for s in stones)
+        ans = 0
+        for i in stones:
+            if i in jewels:
+                ans = ans + 1
+        return ans
