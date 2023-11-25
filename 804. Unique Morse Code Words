@@ -1,0 +1,19 @@
+class Solution:
+    def uniqueMorseRepresentations(self, words: List[str]) -> int:
+        morse_codes = [".-","-...","-.-.","-..",".","..-.","--.","....","..",".---","-.-",".-..","--","-.","---",".--.","--.-",".-.","...","-","..-","...-",".--","-..-","-.--","--.."]
+        
+        alphabet = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
+        
+        dct = {i:j for i,j in zip(alphabet, morse_codes)}
+
+        words_morse = []
+        for word in words:
+            words_morse.append("".join(list(map(dct.get, list(word)))))
+            # dct.get:  <built-in method get of dict object at 0x7f05c0975080> ['g', 'i', 'n']
+            # map() 函数为迭代中的每个项目执行指定的函数。 该项目作为参数发送到函数。
+            # map(function, iterables), 所以这里的dct.get是function, iterables的是list(word)
+            # list(map...), 这里的list是转换为morse code以后也是list的格式
+            # "".join(), 转换为morse code后加前引号，后引号
+            # .append 是转换为morse code之后累加
+
+        return len(set(words_morse))
