@@ -1,0 +1,19 @@
+class Solution:
+    def largeGroupPositions(self, s: str) -> List[List[int]]:
+        groups = []
+        
+        cache = None
+        count = 0
+        
+        for index, char in enumerate(s):
+            if char == cache:
+                count += 1
+            else:
+                if count >= 3:
+                    groups.append([ index - count, index - 1])
+                cache = char
+                count = 1
+        
+        if count >= 3:
+            groups.append([len(s) - count, len(s) - 1])
+        return groups
