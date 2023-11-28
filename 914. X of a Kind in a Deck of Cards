@@ -5,7 +5,17 @@ class Solution:
         groups = c.values()
 
         import math
-        m = math.gcd(*groups)
+        m = math.gcd(*groups) # Find the greatest common divisor of the two integers:
+        # *groups, unpack groups
 
         if m >= 2:
             return True
+
+# Solution 2:
+class Solution:
+    def hasGroupsSizeX(self, deck: List[int]) -> bool:
+
+        c = Counter(deck)
+        
+        return reduce(gcd, c.values()) != 1
+        # The reduce(fun,seq) function is used to apply a particular function passed in its argument to all of the list elements mentioned in the sequence passed along.This function is defined in “functools” module.
