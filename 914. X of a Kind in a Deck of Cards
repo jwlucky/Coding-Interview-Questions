@@ -1,0 +1,11 @@
+# Solution 1:
+class Solution:
+    def hasGroupsSizeX(self, deck: List[int]) -> bool:
+        c = collections.Counter(deck)
+        groups = c.values()
+
+        import math
+        m = math.gcd(*groups)
+
+        if m >= 2:
+            return True
