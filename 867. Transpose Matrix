@@ -1,3 +1,4 @@
+# Solution 1:
 class Solution:
     def transpose(self, matrix: List[List[int]]) -> List[List[int]]:
         t = []
@@ -7,3 +8,9 @@ class Solution:
                 temp.append(matrix[i][j])
             t.append(temp)
         return t
+# Solution 2
+class Solution:
+    def transpose(self, matrix: List[List[int]]) -> List[List[int]]:
+        return zip(*matrix)
+# * means unpack the list
+# zip() The zip() function returns a zip object, which is an iterator of tuples where the first item in each passed iterator is paired together, and then the second item in each passed iterator are paired together etc.
