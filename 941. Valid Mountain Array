@@ -1,0 +1,14 @@
+# Solution 1:
+class Solution:
+    def validMountainArray(self, arr: List[int]) -> bool:
+        if len(arr) < 2:
+            return False
+        else:
+            m = arr.index(max(arr))               
+            if m == len(arr)-1 or m == 0:
+                return False
+            else:
+                left = arr[:m]
+                right = arr[m:]
+                if left == sorted(left) and len(left) == len(set(left)) and right == sorted(right, reverse=True) and len(right) == len(set(right)):
+                    return True
