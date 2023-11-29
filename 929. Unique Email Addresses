@@ -1,0 +1,29 @@
+# Solution 1:
+class Solution:
+    def numUniqueEmails(self, emails: List[str]) -> int:
+
+        def clearEmailRule(email):
+            domain = email.split('@')[-1]
+            local = email.split('@')[0].replace('.', '').split('+')[0]        
+            email = local + '@' + domain
+            return email
+        
+        receiver = []
+        for i in range(len(emails)):
+            print(clearEmailRule(emails[i]))
+            receiver.append(clearEmailRule(emails[i]))
+            print(receiver)
+        
+        return len(set(receiver))
+
+# Solution 2:
+class Solution:
+    def numUniqueEmails(self, emails: List[str]) -> int:
+        myDict = set()
+        for e in emails:
+            local,domain = e.split('@')
+            local = local.split('+')[0]
+            local = local.replace('.','')
+            myDict.add((local,domain))
+        print(myDict)
+        return len(myDict)    
