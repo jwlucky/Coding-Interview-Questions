@@ -27,3 +27,14 @@ class Solution:
             myDict.add((local,domain))
         print(myDict)
         return len(myDict)    
+
+# Solution 3:
+class Solution:
+    def numUniqueEmails(self, emails: List[str]) -> int:
+        reply = set()
+        for email in emails:
+            tmp = email.split('@')
+            tmp[0] = tmp[0].split('+')[0].replace('.', '')
+            reply.add('@'.join(tmp))
+        return len(reply)
+            
