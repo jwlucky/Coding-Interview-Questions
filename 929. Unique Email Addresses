@@ -10,9 +10,9 @@ class Solution:
         
         receiver = []
         for i in range(len(emails)):
-            print(clearEmailRule(emails[i]))
+            # print(clearEmailRule(emails[i]))
             receiver.append(clearEmailRule(emails[i]))
-            print(receiver)
+            # print(receiver)
         
         return len(set(receiver))
 
