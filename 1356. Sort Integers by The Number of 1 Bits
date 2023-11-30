@@ -1,0 +1,21 @@
+# Solution 1: built-in method
+class Solution:
+    def sortByBits(self, arr: List[int]) -> List[int]:
+        arr.sort(key = lambda num: (num.bit_count(), num))
+        return arr
+# Solution 2: Bit Manipulation
+class Solution:
+    def sortByBits(self, arr: List[int]) -> List[int]:
+        hash_table = {}
+        for i in arr:
+            bit = bin(i).count('1')
+            if bit in hash_table:
+                hash_table[bit].append(i)
+            else:
+                hash_table[bit] = [i]
+        res = []   
+ 
+        for i in sorted(hash_table.keys()):
+            res.extend(sorted(hash_table[i]))
+        
+        return res
