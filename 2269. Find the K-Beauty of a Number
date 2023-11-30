@@ -10,3 +10,21 @@ class Solution:
             if i!=0 and num % i == 0:
                 divisor.append(i)
         return len(divisor)
+
+# Solution 2:
+class Solution:
+    def divisorSubstrings(self, num: int, k: int) -> int:
+
+        num1 = str(num)
+        res = []
+        for i in range(len(num1) - k + 1):
+            res.append(num1[i:i+k])
+
+        count = 0
+        for i in res:
+            i = int(i)            
+            if i!=0 and num % i == 0:
+                count += 1
+            else:
+                count += 0
+        return count
