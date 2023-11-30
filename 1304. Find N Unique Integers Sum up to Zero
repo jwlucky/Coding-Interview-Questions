@@ -1,3 +1,4 @@
+# Solution 1:
 class Solution:
     def sumZero(self, n: int) -> List[int]:
 
@@ -12,3 +13,13 @@ class Solution:
             output.append(-i)
 
         return output if n % 2 !=0 else output[1:]
+
+# Solution 2:
+class Solution:
+    def sumZero(self, n: int) -> List[int]:
+
+        result = []
+
+        for i in range(n):
+            result.append(i*2 - n + 1)
+        return result
