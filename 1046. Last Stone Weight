@@ -1,0 +1,17 @@
+# Solution 1:
+class Solution:
+    def lastStoneWeight(self, stones: List[int]) -> int:
+        while True:
+            stones = sorted(stones,reverse = True) # list.sort() will sort the list in-place, mutating its indexes and returning None, whereas sorted() will return a new sorted list leaving the original list unchanged.
+            if len(stones) == 1:
+                return stones[0]
+            elif len(stones) == 0:
+                return 0
+            first = stones.pop(0) # remove first element
+            sec = stones.pop(0) # remove second element
+            if first == sec:
+                # only used in for loop or while loop
+                continue #  destroy both
+            else:
+                stones.append(first-sec) # append the value to stones, go back to sort, until only one item in list stones
+        
