@@ -1,0 +1,30 @@
+# Solution 1:
+class Solution:
+    def findDifference(self, nums1: List[int], nums2: List[int]) -> List[List[int]]:
+
+        final = []
+
+        answers1 = []
+        for n in nums1:
+            if n not in nums2:
+                answers1.append(n)
+
+        answers2 = []
+        for m in nums2:
+            if m not in nums1:
+                answers2.append(m)
+
+        final.append(list(set(answers1)))
+        final.append(list(set(answers2)))
+        return final
+# Solution 2:
+class Solution:
+    def findDifference(self, nums1: List[int], nums2: List[int]) -> List[List[int]]:
+        s_nums1 = set(nums1)
+        s_nums2 = set(nums2)
+
+        n1 = [num for num in s_nums1 if num not in s_nums2]
+        n2 = [num for num in s_nums2 if num not in s_nums1]
+        answer = [n1, n2]
+
+        return answer
