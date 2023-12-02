@@ -1,0 +1,9 @@
+# My Solution:
+class Solution:
+    def findSpecialInteger(self, arr: List[int]) -> int:
+        
+        x = Counter(arr)
+
+        for k, v in x.items():
+            if v >= len(arr)*0.25 and v == max(x.values()):
+                return k
