@@ -1,0 +1,20 @@
+class Solution:
+    def bitwiseComplement(self, n: int) -> int:
+
+        n = bin(n)[2:]
+        
+        bin_dic = {
+            '0':'1',
+            '1':'0'
+        }
+
+        n = list(n)
+        com = []
+        for i in n:
+            com.append(int(bin_dic.get(i)))
+
+        com = "".join(map(str, com))
+
+        com = str(com)
+
+        return int(com,2)
