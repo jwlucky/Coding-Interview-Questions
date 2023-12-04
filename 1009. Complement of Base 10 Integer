@@ -1,3 +1,4 @@
+# Solution 1:
 class Solution:
     def bitwiseComplement(self, n: int) -> int:
 
@@ -10,11 +11,18 @@ class Solution:
 
         n = list(n)
         com = []
+        # this can also work:
+        # for i in n:
+        #     com.append(bin_dic.get(i))
+        # com = "".join(com)
+        # com = str(com)
+
         for i in n:
             com.append(int(bin_dic.get(i)))
 
-        com = "".join(map(str, com))
+        com = "".join(map(str, com)) # map(function, iterables)
 
         com = str(com)
 
         return int(com,2)
+
