@@ -1,0 +1,17 @@
+class Solution:
+    def balancedStringSplit(self, s: str) -> int:
+        
+        countofR = 0
+        countofL = 0
+        count = 0 
+
+        for i in s:
+            if i == 'R':
+                countofR += 1
+            else:
+                countofL += 1
+            if countofR == countofL:
+                count += 1
+                countofR = 0
+                countofL = 0
+        return count
