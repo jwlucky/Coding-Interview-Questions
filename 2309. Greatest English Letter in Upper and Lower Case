@@ -19,3 +19,14 @@ class Solution:
             for j in seen:
                 ind.append(alpha.index(j))
         return alpha[max(ind)].upper()
+
+# Solution 2:
+class Solution:
+    def greatestLetter(self, s: str) -> str:
+        greatest = ''
+        letters = set(s)
+
+        for l in letters:
+            if l.isupper() and l.lower() in s:
+                greatest = max(greatest, l)
+        return greatest
