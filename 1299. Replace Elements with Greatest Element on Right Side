@@ -1,0 +1,33 @@
+# Solution 1, Time Limit Exceeded
+class Solution:
+    def replaceElements(self, arr: List[int]) -> List[int]:
+
+        output = [-1] * len(arr)
+
+        for i in range(len(arr)-1):
+            output[i] = max(arr[i+1:])
+        return output
+
+# Solution 2, Time Limit Exceeded
+class Solution:
+    def replaceElements(self, arr: List[int]) -> List[int]:
+
+        output = []
+
+        for i in range(len(arr)-1):
+            arr[i] = max(arr[i+1:])
+            output.append(arr[i])
+        output.append(-1)
+        return output
+
+# Solution 3:
+class Solution:
+    def replaceElements(self, arr: List[int]) -> List[int]:
+        m = -1
+        for i in range(len(arr)-1, -1, -1):
+            temp = arr[i]
+            arr[i] = m
+            if temp > m:
+                m = temp
+
+        return arr
