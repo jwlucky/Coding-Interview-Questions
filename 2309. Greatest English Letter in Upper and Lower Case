@@ -1,0 +1,21 @@
+# Solution 1:
+class Solution:
+    def greatestLetter(self, s: str) -> str:
+
+        alpha = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+        
+        seen = []
+        for i in s:
+            if i.islower() == True:
+                if i.upper() in s:
+                    seen.append(i)
+
+        if len(seen) == 0:
+            return ""
+        elif len(seen) == 1:
+            return seen[0].upper()
+        else:
+            ind = []
+            for j in seen:
+                ind.append(alpha.index(j))
+        return alpha[max(ind)].upper()
