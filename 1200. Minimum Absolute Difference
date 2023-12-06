@@ -1,0 +1,15 @@
+class Solution:
+    def minimumAbsDifference(self, arr: List[int]) -> List[List[int]]:
+
+        arr.sort()
+        subtraction = []
+
+        for i in range(len(arr)-1):
+            subtraction.append(arr[i+1] - arr[i])
+        minAbs = min(subtraction)
+
+        output = []
+        for j in range(len(arr)-1):
+            if arr[j+1] - arr[j] == minAbs:
+                output.append([arr[j], arr[j+1]])
+        return output
