@@ -1,0 +1,15 @@
+class Solution:
+    def generateTheString(self, n: int) -> str:
+
+        output = 'a'
+        if n==1:
+            return output
+        elif n!=1 and n%2==0:
+            m = n-1
+            output += m * 'b'
+        else:
+            g = 'c'
+            m = n-2
+            output += 'c'
+            output += m * 'b'
+        return output
