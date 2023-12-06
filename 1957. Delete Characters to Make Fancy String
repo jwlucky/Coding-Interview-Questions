@@ -12,3 +12,13 @@ Explanation:
 The outer capture group captures the maximum allowed repetition of a character
 The additional \2+ captures more subsequent occurrences of that same character, so these are the characters that need removal.
 The replacement with \1 thus reproduces the allowed repetition, but omits the additional repetition of that same character.
+
+# Solution 2:
+class Solution:
+    def makeFancyString(self, s: str) -> str:
+        stack = []
+        for letter in s:
+            if len(stack) > 1 and letter == stack[-1] == stack[-2]:
+                stack.pop()
+            stack.append(letter)
+        return ''.join(stack)
