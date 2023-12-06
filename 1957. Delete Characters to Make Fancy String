@@ -1,0 +1,14 @@
+# Solution 1:
+import re
+class Solution:
+    def makeFancyString(self, s: str) -> str:
+        n = 2
+        regex = re.compile(rf"((.)\2{{{n-1}}})\2+") 
+        return regex.sub(r"\1", s)
+
+Explanation:
+{{: this double brace represents a literal brace in an f-string
+{n-1} injects the value of n-1, so together with the additional (double) brace-wrap, this {{{n-1}}} produces {2} when n is 3.
+The outer capture group captures the maximum allowed repetition of a character
+The additional \2+ captures more subsequent occurrences of that same character, so these are the characters that need removal.
+The replacement with \1 thus reproduces the allowed repetition, but omits the additional repetition of that same character.
