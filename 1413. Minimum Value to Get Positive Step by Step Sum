@@ -1,0 +1,14 @@
+# Solution 1:
+class Solution:
+    def minStartValue(self, nums: List[int]) -> int:
+        return max(1, 1 - min(accumulate(nums)))
+
+# Solution 2:
+class Solution:
+    def minStartValue(self, nums: List[int]) -> int:
+        m = s = 0
+        for num in nums:
+	        s += num
+	        m = min(m, s)
+        return 1 - m
+        # return abs(m)+1
