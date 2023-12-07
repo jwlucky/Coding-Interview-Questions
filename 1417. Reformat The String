@@ -1,0 +1,57 @@
+# Solution 1:
+class Solution:
+    def reformat(self, s: str) -> str:
+
+        result = ''
+        if len(s) == 1:
+            return s
+        elif s.isalpha() == True:
+            return result
+        elif s.isdigit() == True:
+            return result
+        else:
+            n = []
+            a = []
+            for i in s:
+                if i >= '0' and i <= '9':
+                    n.append(i)
+                else:
+                    a.append(i)
+            if len(a) == len(n):
+                result += "".join(x + y for x,y in zip(a,n))
+            elif abs(len(a)-len(n)) != 1:
+                return result
+            elif len(a) > len(n):
+                result += "".join(x + y for x,y in zip(a,n))
+                result += a[-1]
+            else:
+                result += "".join(x + y for x,y in zip(n,a))
+                result += n[-1]
+            return result
+
+
+# Solution 2:
+class Solution:
+    def reformat(self, s: str) -> str:
+        
+        if len(s) == 1:
+            return s
+
+        numeric = [x for x in s if x.isnumeric()]
+        alpha = [x for x in s if x.isalpha()]
+
+        if abs(len(alpha) - len(numeric)) > 1:
+            return ""
+
+        else:
+            s_new =""
+            if len(alpha) > len(numeric):
+                s_new += ''.join([a + n for a, n in zip(alpha, numeric)])
+                s_new += alpha[-1]
+                
+            elif len(numeric) > len(alpha):
+                s_new +=numeric[-1]
+                s_new += ''.join([a + n for a, n in zip(alpha, numeric)])
+            else:
+                s_new = ''.join([a + n for a, n in zip(alpha, numeric)])
+        return s_new
