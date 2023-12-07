@@ -17,3 +17,21 @@ class Solution:
             if max_num in min_list:
                 output.append(max_num)
         return output
+# Solution 3:
+class Solution:
+    def luckyNumbers (self, matrix: List[List[int]]) -> List[int]:
+        
+        min_list = []
+        for row in matrix:
+            min_list.append(min(row))
+
+        max_list = []
+        for col in zip(*matrix):
+            max_list.append(max(col))
+
+
+        output = []
+        for num in min_list:
+            if num in max_list:
+                output.append(num)
+        return output
