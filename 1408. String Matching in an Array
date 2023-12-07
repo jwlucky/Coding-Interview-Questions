@@ -1,0 +1,22 @@
+# Solution 1:
+class Solution:
+    def stringMatching(self, words: List[str]) -> List[str]:
+
+        arr = " ".join(words)
+
+        subStr = [char for char in words if arr.count(char) >= 2]
+        return subStr
+# Solution 2:
+class Solution:
+    def stringMatching(self, words: List[str]) -> List[str]:
+        arr1=[]
+        count=0
+        for i in words:
+            for j in words:
+                if i in j:
+                    count=count+1
+            if count>=2:
+                arr1.append(i)
+            count=0
+        return arr1
+        
