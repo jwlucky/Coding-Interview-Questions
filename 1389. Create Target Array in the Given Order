@@ -1,3 +1,4 @@
+# Solution 1:
 class Solution:
     def createTargetArray(self, nums: List[int], index: List[int]) -> List[int]:
         arr = []
@@ -5,3 +6,10 @@ class Solution:
         for i,r in zip(nums,index):
             arr.insert(r,i)
         return arr
+# Solution 2:
+class Solution:
+    def createTargetArray(self, nums: List[int], index: List[int]) -> List[int]:
+        t = []
+        for i,j in enumerate(index):
+            t.insert(j, nums[i]) 
+        return t
