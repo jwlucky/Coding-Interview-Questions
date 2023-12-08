@@ -1,0 +1,32 @@
+# Solution 1:
+class Solution:
+    def kLengthApart(self, nums: List[int], k: int) -> bool:
+        
+        ind = []
+        for i in range(len(nums)):
+            if nums[i]==1:
+                ind.append(i)
+
+        if len(ind) == 1 or len(ind) == 0:
+            return True
+
+        result = []
+        for j in range(len(ind)-1):
+            if ind[j+1]-ind[j]-1>=k:
+                result.append(True)
+            else:
+                result.append(False)
+        
+        if len(set(result)) == 1 and list(set(result))[0] == True:
+            return True
+# Solution 2:
+class Solution:
+    def kLengthApart(self, nums: List[int], k: int) -> bool:
+        allowed = 0
+        for i, num in enumerate(nums):
+            if num == 1:
+                if i < allowed:
+                    return False
+                allowed = i+k+1
+
+        return True
