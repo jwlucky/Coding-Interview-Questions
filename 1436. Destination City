@@ -1,0 +1,14 @@
+class Solution:
+    def destCity(self, paths: List[List[str]]) -> str:
+        
+        if len(paths) == 1:
+            return paths[0][1]
+        else:
+            go = []
+            to = []
+            for i in range(len(paths)):
+                go.append(paths[i][0])
+                to.append(paths[i][1])
+            for j in to:
+                if j not in go:
+                    return j
