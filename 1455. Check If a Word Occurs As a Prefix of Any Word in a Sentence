@@ -1,0 +1,28 @@
+# Solution 1:
+class Solution:
+    def isPrefixOfWord(self, sentence: str, searchWord: str) -> int:
+
+        s=sentence.split()
+        ind=[]
+        for i in range(len(s)):
+            if s[i].startswith(searchWord):
+                ind.append(i)
+
+        if len(ind)==0:
+            return -1
+        elif len(ind)==1:
+            return ind[0]+1
+        else:
+            return min(ind)+1
+# Solution 2:
+class Solution:
+    def isPrefixOfWord(self, sentence: str, searchWord: str) -> int:
+        
+        s = sentence.split()
+        p = len(searchWord)
+
+        for i, word in enumerate(s):
+            if word[:p] == searchWord:
+                return i+1
+
+        return -1
