@@ -1,0 +1,32 @@
+# Solution 1:
+class Solution:
+    def findLucky(self, arr: List[int]) -> int:
+
+        a = Counter(arr)
+        res = [-1]
+
+        for key in a.keys():
+            if key == a[key]:
+               res.append(key)
+        return max(res)
+
+# Solution 2:
+class Solution:
+    def findLucky(self, arr: List[int]) -> int:
+        
+        a = Counter(arr)
+        l = [-1]
+        for k,v in a.items():
+            if k == v:
+                l.append(k)
+        return max(l)
+
+# Solution 3:
+class Solution:
+    def findLucky(self, arr: List[int]) -> int:
+        
+        lucky_numbers = [-1]
+        for num in arr:
+            if num == arr.count(num):
+                lucky_numbers.append(num)
+        return max(lucky_numbers)
