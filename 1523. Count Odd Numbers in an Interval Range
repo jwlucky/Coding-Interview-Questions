@@ -1,0 +1,17 @@
+# Solution 1: Time Limit Exceeded
+class Solution:
+    def countOdds(self, low: int, high: int) -> int:
+        
+        count = 0
+        for n in range(low,high+1):
+            if n%2!=0:
+                count+=1
+        return count
+
+# Solution 2:
+class Solution:
+    def countOdds(self, low: int, high: int) -> int:
+        is_odd = (high - low)//2
+        if low%2==1 or high%2==1:
+            is_odd+=1
+        return is_odd
