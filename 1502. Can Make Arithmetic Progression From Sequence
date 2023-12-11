@@ -1,0 +1,29 @@
+# Solution 1:
+class Solution:
+    def canMakeArithmeticProgression(self, arr: List[int]) -> bool:
+
+        arr.sort()
+        if len(set(arr))==1:
+            return True
+        elif len(set(arr))!=1 and len(set(arr))!=len(arr):
+            return False
+        else:
+            if len(arr)==2:
+                return True
+            else:
+                for i in range(len(arr)-2):
+                    if arr[i+1]-arr[i]!=arr[i+2]-arr[i+1]:
+                        return False
+                    
+                return True
+
+# Solution 2:
+class Solution:
+    def canMakeArithmeticProgression(self, arr: List[int]) -> bool:
+
+        arr.sort()
+        step = arr[-1]-arr[-2]
+        for i in range(len(arr)-1):
+            if arr[i+1]-arr[i]!= step:
+                return False
+        return True
