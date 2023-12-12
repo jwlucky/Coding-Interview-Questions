@@ -1,0 +1,10 @@
+# Solution 1:
+class Solution:
+    def numWaterBottles(self, numBottles: int, numExchange: int) -> int:
+
+        ans = numBottles
+        while numBottles >= numExchange:
+            rest = numBottles%numExchange
+            numBottles = numBottles//numExchange+rest
+            ans += numBottles - rest
+        return ans
