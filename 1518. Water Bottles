@@ -8,3 +8,22 @@ class Solution:
             numBottles = numBottles//numExchange+rest
             ans += numBottles - rest
         return ans
+# Solution 2:
+class Solution:
+    def numWaterBottles(self, numBottles: int, numExchange: int) -> int:
+        return numBottles + (numBottles -1)// (numExchange-1)
+
+# Solution 3:
+class Solution:
+    def numWaterBottles(self, numBottles: int, numExchange: int) -> int:
+        total_bottles = numBottles
+        empty_bottles = numBottles
+
+        while empty_bottles >= numExchange:
+            full_bottles = empty_bottles // numExchange
+            remaining_empty_bottles = empty_bottles % numExchange
+
+            total_bottles += full_bottles
+            empty_bottles = full_bottles + remaining_empty_bottles
+
+        return total_bottles
