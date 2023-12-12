@@ -1,0 +1,28 @@
+# Solution 1:
+class Solution:
+    def makeGood(self, s: str) -> str:
+        stack = []
+        for char in s: 
+            # upper char
+            if stack and stack[-1].isupper() and stack[-1].lower() == char:
+                stack.pop()
+            # lower char
+            elif stack and stack[-1].islower() and stack[-1].upper() == char:
+                stack.pop()
+            else:
+                stack.append(char)
+        return ''.join(stack)
+# Solution 2:
+class Solution:
+    def makeGood(self, s: str) -> str:
+        
+        st = []
+        
+        for ch in s:
+            if st and st[-1] == ch.swapcase():
+                st.pop()
+            else:
+                st.append(ch)
+        
+        return ''.join(st)
+        
