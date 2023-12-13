@@ -26,3 +26,17 @@ class Solution:
         else:
             output += (words[-1] + extra_spaces * ' ')
         return output
+
+# Solution 2:
+class Solution:
+    def reorderSpaces(self, text: str) -> str:
+        number_of_spaces = text.count(" ")
+        words = text.split()
+        number_of_words = len(words)
+   
+        if number_of_words > 1:
+            add_spaces = number_of_spaces//(number_of_words-1)
+            extra_spaces = number_of_spaces%(number_of_words-1)
+            return (" "*add_spaces).join(words) + " "*extra_spaces
+        else:
+            return "".join(words) + " "*number_of_spaces  
