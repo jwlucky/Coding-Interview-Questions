@@ -1,0 +1,28 @@
+# Solution 1:
+class Solution:
+    def minOperations(self, logs: List[str]) -> int:
+
+        steps = 0
+        for i in range(len(logs)):
+            if logs[i] == './':
+                steps += 0
+            elif logs[i] == '../' and steps != 0 :
+                steps -= 1
+            elif logs[i] == '../' and steps == 0:
+                steps -= 0
+            else:
+                steps += 1                
+        return steps
+# Solution 2:
+
+class Solution:
+    def minOperations(self, logs: List[str]) -> int:
+        stack = 0
+        for opp in logs:
+            if stack and opp == "../":
+                stack -= 1
+            elif opp == "./":
+                pass
+            elif opp != "../":
+                stack += 1
+        return stack
