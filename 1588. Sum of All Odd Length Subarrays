@@ -1,0 +1,23 @@
+# Solution 1:
+class Solution:
+    def sumOddLengthSubarrays(self, arr: List[int]) -> int:
+        
+        s = 0
+        output = []
+
+        for odd_number in range(len(arr)+1):
+            if odd_number % 2!=0:
+                for i in range(len(arr)):
+                    if i + odd_number <= len(arr):
+                        output.append(arr[i:i+odd_number])
+        for j in range(len(output)):
+            s += sum(output[j])
+        return s
+# Solution 2:
+class Solution:
+    def sumOddLengthSubarrays(self, arr: List[int]) -> int:
+        n=len(arr)
+        s=0
+        for i in range(n):
+            s+=((i+1)*(n-i)+1)//2*arr[i]
+        return s
