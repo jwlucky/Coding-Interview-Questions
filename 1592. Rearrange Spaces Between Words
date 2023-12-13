@@ -1,0 +1,28 @@
+# Solution 1:
+class Solution:
+    def reorderSpaces(self, text: str) -> str:
+
+        output = ''
+        words = text.split()
+
+        if len(text) == 1:
+            return text
+
+        number_of_spaces = text.count(' ')
+        number_of_words = len(words)
+
+        if number_of_words == 1:
+            output = words[0] + number_of_spaces*' '
+            return output
+            
+        add_spaces = number_of_spaces//(number_of_words-1)
+        extra_spaces = number_of_spaces%(number_of_words-1)
+        
+        for word in words[:-1]:
+            word += add_spaces * ' '
+            output += word
+        if extra_spaces == 0:
+            output += words[-1]
+        else:
+            output += (words[-1] + extra_spaces * ' ')
+        return output
