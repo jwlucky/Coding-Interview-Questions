@@ -1,0 +1,25 @@
+# Solution 1:
+class Solution:
+    def numSpecial(self, mat: List[List[int]]) -> int:
+        v = [i for i, r in enumerate(mat) if sum(r) == 1]
+        h = [i for i, c in enumerate(zip(*mat)) if sum(c) == 1]
+        return sum(mat[r][c] for r in v for c in h)
+
+# Solution 2:
+class Solution:
+    def numSpecial(self, mat: List[List[int]]) -> int:
+        m, n = len(mat), len(mat[0])
+        row, col = [0 for _ in range(m)], [0 for _ in range(n)]
+
+        for i in range(m):
+          for j in range(n):
+            row[i] += mat[i][j]
+            col[j] += mat[i][j]
+
+        res = 0
+        for i in range(m):
+          for j in range(n):
+            if mat[i][j] == 1 and row[i] == 1 and col[j] == 1:
+              res += 1
+
+        return res
