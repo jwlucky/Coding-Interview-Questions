@@ -1,0 +1,28 @@
+# Solution 1:
+class Solution:
+    def countConsistentStrings(self, allowed: str, words: List[str]) -> int:
+
+        A = set(allowed)
+        count = 0
+        for word in words:
+            word = set(word)
+            found = True
+            for w in word:
+                if w not in A:
+                    found = False
+                    break
+            if found:
+                count += 1
+        return count
+
+# Solution 2:
+class Solution:
+    def countConsistentStrings(self, allowed: str, words: List[str]) -> int:
+
+        count = len(words)
+        for word in words:
+            for char in word:
+                if char not in allowed:
+                    count-=1
+                    break
+        return count
