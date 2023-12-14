@@ -1,0 +1,19 @@
+# Solution 1:
+class Solution:
+    def decrypt(self, code: List[int], k: int) -> List[int]:
+
+        decrypted_code = []
+        n = len(code)
+        if k == 0:
+            decrypted_code = [0] * len(code)
+        elif k > 0:
+            code = code * 2
+            for i in range(n):
+                code[i] = sum(code[i+1:i+1+k])
+                decrypted_code.append(code[i])
+        elif k < 0:
+            code = code * 2
+            for i in range(n):
+                start = n+i-abs(k)
+                decrypted_code.append(sum(code[start:n+i]))
+        return decrypted_code
