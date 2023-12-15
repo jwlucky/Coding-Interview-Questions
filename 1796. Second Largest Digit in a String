@@ -1,0 +1,25 @@
+# Solution 1:
+class Solution:
+    def secondHighest(self, s: str) -> int:
+        
+        digits = []
+        for char in s:
+            if char.isdigit() == True:
+                digits.append(char)
+        sorted_digits = sorted(list(set(digits)), reverse=True)
+
+        if len(sorted_digits) == 1 or len(sorted_digits) == 0:
+            return -1
+        else:
+            return int(sorted_digits[1])
+
+# Solution 2:
+class Solution:
+    def secondHighest(self, s: str) -> int:
+        d = []
+        for i in s:
+            if i.isdigit() and i not in d:
+                d.append(i)
+        if len(d) < 2:
+            return -1
+        return int(sorted(d, reverse=True)[1])
