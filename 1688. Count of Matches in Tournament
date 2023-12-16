@@ -1,0 +1,15 @@
+# Solution 1:
+class Solution:
+    def numberOfMatches(self, n: int) -> int:
+        return n-1
+
+# Solution 2:
+class Solution:
+    def numberOfMatches(self, n: int) -> int:
+        matches = 0
+        while n>1:
+            played = n//2
+            matches += played
+            n -= played
+        return matches
+        
