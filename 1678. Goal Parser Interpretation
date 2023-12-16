@@ -1,0 +1,42 @@
+# Solution 1:
+
+class Solution:
+    def interpret(self, command: str) -> str:
+
+        c = list(command)
+        for i in range(len(c)-1):
+            if c[i] == '(' and c[i+1] == ')':
+                c[i] = 'o'
+                c[i+1] = ''
+            elif c[i] == '(' and c[i+1] == 'a':
+                c[i] = ''
+        
+        output = ''.join(c).replace(')', '')
+        return output
+
+# Solution 2:
+
+class Solution:
+    def interpret(self, command: str) -> str:
+        return command.replace('(al)', 'al').replace('()', 'o')
+
+# Solution 3:
+
+class Solution:
+    def interpret(self, command: str) -> str:
+
+        d = {
+            "(al)": "al",
+            "()": "o",
+            "G": "G"
+        }
+
+        temp, res = "", ""
+
+        for i in range(len(command)):
+            temp += command[i]
+            if temp in d:
+                res += d[temp]      # add mapped value to result
+                temp = ""           # reset temp
+
+        return res
