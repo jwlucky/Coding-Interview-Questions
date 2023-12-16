@@ -1,0 +1,25 @@
+# Solution 1:
+class Solution:
+    def halvesAreAlike(self, s: str) -> bool:
+        a = s[:len(s)//2]
+        b = s[len(s)//2:]
+        vowels=['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U']
+
+        a_in_vowel, b_in_vowel = 0, 0
+        
+        for char in a:
+            if char in vowels:
+                a_in_vowel += 1
+        for char in b:
+            if char in vowels:
+                b_in_vowel += 1
+        
+        return True if a_in_vowel == b_in_vowel else False
+
+# Solution 2:
+class Solution:
+    def halvesAreAlike(self, s: str) -> bool:
+        vowels = {'a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'}
+        a = [1 for char in s[:len(s) // 2] if char in vowels]
+        b = [1 for char in s[len(s) // 2:] if char in vowels]
+        return len(a) == len(b)
