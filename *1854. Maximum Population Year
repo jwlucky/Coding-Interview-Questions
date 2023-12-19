@@ -1,0 +1,34 @@
+# Solution 1:
+class Solution:
+    def maximumPopulation(self, logs: List[List[int]]) -> int:
+        events = []
+        for log in logs:
+            events.append((log[0],1))
+            events.append((log[1],-1))
+        events.sort()
+        max_alive = 0
+        max_year = None
+        total = 0
+        for year,n in events:
+            total+=n
+            if total > max_alive:
+                max_alive = total
+                max_year = year
+        return max_year
+
+# Solution 2:
+class Solution:
+    def maximumPopulation(self, logs: List[List[int]]) -> int:
+        delta = [0] * 2055
+
+        for birth, death in logs:
+            delta[birth] += 1
+            delta[death] -= 1
+
+        mx = res = cur = 0
+        for i, v in enumerate(delta):
+            cur += v
+            if mx < cur:
+                mx = cur
+                res = i
+        return res
