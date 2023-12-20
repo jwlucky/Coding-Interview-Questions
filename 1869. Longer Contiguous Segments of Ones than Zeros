@@ -1,0 +1,29 @@
+# Solution 1:
+class Solution:
+    def checkZeroOnes(self, s: str) -> bool:
+        ones = 0
+        zeroes = 0
+        for k,g in itertools.groupby(s):
+            if k == '1':
+                ones = max(ones,len(list(g)))
+            else:
+                zeroes = max(zeroes,len(list(g)))
+        return ones > zeroes
+
+# Solution 2:
+class Solution:
+  def checkZeroOnes(self, s: str) -> bool:
+
+    longestOnes, longestZeros = 0, 0
+    currOnes, currZeros = 0, 0
+    for c in s:
+      if c == '0':
+        currOnes = 0
+        currZeros += 1
+        longestZeros = max(longestZeros, currZeros)
+      else:
+        currZeros = 0
+        currOnes += 1
+        longestOnes = max(longestOnes, currOnes)
+
+    return longestOnes > longestZeros
