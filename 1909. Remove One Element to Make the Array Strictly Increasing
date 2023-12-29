@@ -1,0 +1,36 @@
+# Solution 1:
+class Solution:
+    def canBeIncreasing(self, nums: List[int]) -> bool:
+        removed_once = False
+        
+        for i in range(1, len(nums)):
+            if nums[i] <= nums[i-1]:
+                if removed_once:
+                    return False
+                if i > 1 and nums[i] <= nums[i-2]:
+                    nums[i] = nums[i-1]
+
+                removed_once = True
+        
+        return True
+
+# Solution 2:
+class Solution:
+    def canBeIncreasing(self, nums: List[int]) -> bool:
+        # Variable to count the number of violations to the strictly increasing rule
+        count_violations = 0
+
+        for i in range(1, len(nums)):
+            # If a violation is found
+            if nums[i - 1] >= nums[i]:
+                count_violations += 1
+                # If more than one violation is found, return false
+                if count_violations > 1:
+                    return False
+
+                # Special case: check if removing nums[i - 1] or nums[i] can solve the issue
+                if i > 1 and nums[i - 2] >= nums[i]:
+                    nums[i] = nums[i - 1]
+
+        # If zero or one violation is found, it can be made strictly increasing
+        return True
