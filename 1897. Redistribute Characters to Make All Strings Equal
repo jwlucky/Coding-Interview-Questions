@@ -1,0 +1,13 @@
+class Solution:
+    def makeEqual(self, words: List[str]) -> bool:
+
+        s = ''.join(words)
+        c = Counter(s)
+        v = c.values()
+
+        flag = True
+        for n in v:
+            if n % len(words) !=0:
+                flag = False
+
+        return flag == True
