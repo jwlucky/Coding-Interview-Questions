@@ -1,0 +1,24 @@
+# Solution 1:
+class Solution:
+    def divideString(self, s: str, k: int, fill: str) -> List[str]:
+
+        ans = []
+        g = len(s) // k 
+        m = len(s) % k
+
+        for i in range(g):
+            ans.append(s[k*i:k*(i+1)])
+
+        if m != 0:
+            last_group = ''.join([s[g*k:], (k-m)*fill])
+            ans.append(last_group)
+        return ans
+# Solution 2:
+class Solution:
+    def divideString(self, s: str, k: int, fill: str) -> List[str]:
+        ans = []
+        for i in range(0,len(s),k):
+            ans.append(''.join(s[i:i+k]))
+        while len(ans[-1]) < k:
+            ans[-1]+=fill
+        return ans
