@@ -1,0 +1,26 @@
+# Solution 1:
+class Solution:
+    def minTimeToType(self, word: str) -> int:
+        s = 'abcdefghijklmnopqrstuvwxyz'
+        sec = 0
+        cur = 'a'
+        for i in word:
+            aw = abs(s.index(i) - s.index(cur)) 
+            cw = abs(26 - aw)
+            sec += min(aw,cw) + 1
+            cur = i
+        return sec
+
+# Solution 2:
+class Solution:
+    def minTimeToType(self, word: str) -> int:
+        
+        count = len(word)
+        curr = 'a'
+
+        for i in word:
+            result = (ord(i) - ord(curr)) % 26 # The ord() function returns the number representing the unicode code of a specified character.
+            count += min(result, 26 - result)
+            curr = i
+
+        return count
