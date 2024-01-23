@@ -1,0 +1,49 @@
+# Solution 1:
+
+class Solution:
+    def capitalizeTitle(self, title: str) -> str:
+        title = title.split()
+        output = []
+        for word in title:
+            if len(word) <= 2:
+                word = word.lower()
+            else:
+                word = word.title()
+            output.append(word)
+        return ' '.join(output)
+
+# Solution 2:
+class Solution:
+    def capitalizeTitle(self, title: str) -> str:
+        ls=title.split()
+        a=[]
+        for i in ls:
+            if len(i)==1 or len(i)==2: 
+                a.append(i.lower())
+            else: 
+                a.append(i.capitalize())
+        b=' '.join([str(elem) for elem in a])
+        return b
+
+# Solution 3:
+class Solution:
+    def capitalizeTitle(self, title: str) -> str:
+
+        t = title.split()
+        for i, v in enumerate(t):
+            if len(v) <= 2:
+                t[i] = v.lower()
+            else:
+                t[i] = v.title()
+        return ' '.join(t)
+
+# Solution 4:
+class Solution:
+    def capitalizeTitle(self, title: str) -> str:
+        l=title.split()
+        for i in range(len(l)):
+            l[i]=l[i].lower()
+            if(len(l[i])>2):
+                l[i]=l[i].title()
+        return ' '.join(l)
+            
