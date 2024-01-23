@@ -1,0 +1,22 @@
+# Solution 1:
+class Solution:
+    def checkString(self, s: str) -> bool:
+        a_index = []
+        b_index = []
+        for i in range(len(s)):
+            if s[i] == 'a':
+                a_index.append(i)
+            else:
+                b_index.append(i)
+
+        if len(a_index) == 0 or len(b_index) == 0:
+            return True   
+        return max(a_index) < min(b_index)
+
+# Solution 2:
+class Solution:
+    def checkString(self, s: str) -> bool:
+        st = ''.join(sorted(s))
+        if st == s: # after sorted, a is before b; therefore, compare st and s. 
+            return True
+        return False
