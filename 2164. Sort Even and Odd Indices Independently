@@ -1,0 +1,29 @@
+# Solution 1:
+class Solution:
+    def sortEvenOdd(self, nums: List[int]) -> List[int]:
+        odd_nums = []
+        even_nums = []
+        for i in range(len(nums)):
+            if i % 2 != 0:
+                odd_nums.append(nums[i])
+            else:
+                even_nums.append(nums[i])
+
+        dec_odd_nums = sorted(odd_nums, reverse=True) # non-increasing
+        inc_even_nums = sorted(even_nums) # non-decreasing
+
+        output = []
+        for x, y in zip(inc_even_nums, dec_odd_nums):
+            output.append(x)
+            output.append(y)
+
+        if len(nums) % 2 != 0:
+            output.append(inc_even_nums[-1])
+        return output
+
+# Solution 2:
+class Solution:
+    def sortEvenOdd(self, nums: List[int]) -> List[int]:
+       nums[0::2]=sorted(nums[0::2])
+       nums[1::2]=sorted(nums[1::2],reverse=True)
+       return nums
