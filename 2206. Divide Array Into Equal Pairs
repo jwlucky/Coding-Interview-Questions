@@ -1,0 +1,17 @@
+# Solution 1:
+class Solution:
+    def divideArray(self, nums: List[int]) -> bool:
+
+        for num in nums:
+            c = nums.count(num)
+            if c % 2 != 0:
+                return False
+        return True
+# Solution 2:
+class Solution:
+    def divideArray(self, nums: List[int]) -> bool:
+        count = Counter(nums)
+        for check in count.values():
+            if check%2 != 0:
+                return False
+        return True
