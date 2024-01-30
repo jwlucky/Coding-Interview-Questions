@@ -1,0 +1,25 @@
+# Solution 1:
+class Solution:
+    def reversePrefix(self, word: str, ch: str) -> str:
+
+        if ch not in word: # same as if i == -1
+            return word
+
+        output = ''
+        i = word.find(ch)
+        front = word[:i+1]
+        back = word[i+1:]
+        output = str(front[::-1]) + str(back)
+        return output
+# Solution 2:
+class Solution:
+    def reversePrefix(self, word: str, ch: str) -> str:
+
+        i = word.find(ch)
+        front = word[:i+1]
+        back = word[i+1:]
+        output = front[::-1] + back
+        return output
+
+        if i == -1:
+            return word
