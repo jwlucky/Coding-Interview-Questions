@@ -1,0 +1,24 @@
+# Solution 1:
+class Solution:
+    def finalValueAfterOperations(self, operations: List[str]) -> int:
+        X = 0
+        op = {
+            "--X": "-1",
+            "X--": "-1",
+            "++X": "+1",
+            "X++": "+1"
+        }
+        for i in range(len(operations)):
+            X += int(op.get(operations[i]))
+            
+        return X
+# Solution 2:
+class Solution:
+    def finalValueAfterOperations(self, operations: List[str]) -> int:
+        x=0
+        for o in operations:
+            if '+' in o:
+                x+=1
+            else:
+                x-=1
+        return x      
