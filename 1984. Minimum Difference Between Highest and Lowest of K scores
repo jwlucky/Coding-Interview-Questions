@@ -9,3 +9,16 @@ class Solution:
             min_diff = min(min_diff, nums[i+k]-nums[i])
         
         return min_diff
+# Solution 2:
+class Solution:
+    def minimumDifference(self, nums: List[int], k: int) -> int:
+	    if len(nums) <= 1:
+		    return 0
+
+	    nums.sort()
+	    res = nums[k-1] - nums[0]
+
+	    for i in range(k, len(nums)):
+		    res = min(res, nums[i] - nums[i - k + 1])
+
+	    return res
