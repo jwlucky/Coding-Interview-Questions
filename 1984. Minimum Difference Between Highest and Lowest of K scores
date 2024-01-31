@@ -1,0 +1,11 @@
+# Solution 1:
+class Solution:
+    def minimumDifference(self, nums: List[int], k: int) -> int:
+        nums.sort()
+        
+        k -= 1
+        min_diff = float('inf') # It acts as an unbounded upper value for comparison. This is useful for finding lowest values for something.
+        for i in range(len(nums)-k):
+            min_diff = min(min_diff, nums[i+k]-nums[i])
+        
+        return min_diff
