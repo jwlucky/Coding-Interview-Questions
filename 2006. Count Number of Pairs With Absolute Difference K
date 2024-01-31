@@ -1,0 +1,20 @@
+# Solution 1:
+class Solution:
+    def countKDifference(self, nums: List[int], k: int) -> int: 
+        g = list(itertools.combinations(nums, 2))
+
+        diff = 0
+        for i in range(len(g)):
+            if abs(g[i][1]-g[i][0]) == k:
+                diff += 1
+        return diff
+# Solution 2:
+class Solution:
+    def countKDifference(self, nums: List[int], k: int) -> int: 
+        count = 0
+        nums.sort()
+        for i in nums:
+            for j in nums:
+                if i < j and abs(i-j) == k:
+                    count += 1
+        return count
