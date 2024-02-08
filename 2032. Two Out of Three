@@ -1,0 +1,16 @@
+# Solution 1:
+class Solution:
+    def twoOutOfThree(self, nums1: List[int], nums2: List[int], nums3: List[int]) -> List[int]:
+
+        output1 = list(set(nums1).intersection(nums2))
+        output2 = list(set(nums1).intersection(nums3))
+        output3 = list(set(nums2).intersection(nums3))
+        output = list(set(output1 + output2 + output3))
+        return output
+# Solution 2:
+class Solution:
+    def twoOutOfThree(self, nums1: List[int], nums2: List[int], nums3: List[int]) -> List[int]:
+        set1=set(nums1)
+        set2=set(nums2)
+        set3=set(nums3)
+        return list(set1&set2|set1&set3|set2&set3)
