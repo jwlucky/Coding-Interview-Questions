@@ -1,0 +1,21 @@
+# Solution 1:
+class Solution:
+    def areNumbersAscending(self, s: str) -> bool:
+        d = []
+        s = s.split()
+
+        for i in range(len(s)):
+            if s[i].isdigit() == True:
+                d.append(int(s[i]))
+
+        dd = sorted(d)
+
+        return d == dd and len(set(d)) == len(d)
+
+# Solution 2:
+    def areNumbersAscending(self, s: str) -> bool:
+        nums = []
+        for word in s.split():
+            if word.isdigit():
+                nums.append(int(word))
+        return all(nums[i] < nums[i+1] for i in range(len(nums)-1))
