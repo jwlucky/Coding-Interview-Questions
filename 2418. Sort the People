@@ -1,0 +1,25 @@
+# Solution 1:
+class Solution:
+    def sortPeople(self, names: List[str], heights: List[int]) -> List[str]:
+
+        people = list(zip(names, heights))
+        sorted_people = sorted(people, key = lambda x: x[1], reverse = True)
+
+        output = []
+        for i in range(len(sorted_people)):
+            output.append(sorted_people[i][0])
+        return output
+
+# Solution 2:
+class Solution:
+    def sortPeople(self, names: List[str], heights: List[int]) -> List[str]:
+        map = {}
+        for i in range(0, len(heights)):
+            map[heights[i]] = i
+        heights.sort(reverse=True)
+        output = []
+        for height in heights:
+            index = map[height]
+            output.append(names[index])
+
+        return output
