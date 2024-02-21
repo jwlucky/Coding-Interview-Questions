@@ -1,0 +1,22 @@
+# Solution 1:
+class Solution:
+    def findMaxK(self, nums: List[int]) -> int:
+        grp = []
+        for num in nums:
+            if num > 0 and -num in nums:
+                grp.append(num)
+
+        if len(grp) == 0:
+            return -1
+        else:
+            return max(grp)    
+
+# Solution 2:
+class Solution:
+    def findMaxK(self, nums: List[int]) -> int:
+        nums.sort()
+
+        for i in range(len(nums)-1,0,-1):
+            if -nums[i] in nums:
+                return nums[i]
+        return -1
