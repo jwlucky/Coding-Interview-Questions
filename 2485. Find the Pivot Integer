@@ -1,0 +1,45 @@
+# Solution 1:
+class Solution:
+    def pivotInteger(self, n: int) -> int:
+
+        nums = [num for num in range(1, n+1)]
+        ans = -1
+
+        if n == 1:
+            ans = 1
+
+        for i in range(len(nums)-1):
+            if sum(nums[:i+1]) == sum(nums[i:]):
+                ans = i + 1
+                break
+
+        return ans
+
+# Solution 2:
+class Solution:
+    def pivotInteger(self, n: int) -> int:
+        x = 1
+        while x <= n:
+            if sum(range(1,x+1)) == sum(range(x, n+1)):
+                return x
+            else:
+                x += 1
+        return -1
+
+# Solution 3:
+class Solution:
+    def pivotInteger(self, n: int) -> int:
+        left, right = 1, n
+        left_sum, right_sum = 1,n
+        while left < right:
+            if left_sum < right_sum:
+                left += 1
+                left_sum += left
+            else:
+                right -= 1
+                right_sum += right
+        if right_sum == left_sum: 
+            return left
+        else:
+            return -1
+        
