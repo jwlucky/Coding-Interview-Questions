@@ -1,0 +1,20 @@
+# Solution 1:
+class Solution:
+    def averageValue(self, nums: List[int]) -> int:
+        even_numbers_3 = [ num for num in nums if num % 2 == 0 and num % 3 == 0]
+
+        if len(even_numbers_3) == 0:
+            return 0
+        elif len(even_numbers_3) == 1:
+            return even_numbers_3[0]
+        else:
+            return sum(even_numbers_3) // len(even_numbers_3)
+
+# Solution 2:
+class Solution:
+    def averageValue(self, nums: List[int]) -> int:
+        res = []
+        for num in nums:
+            if num % 2 == 0 and num % 3 == 0:
+                res.append(num)
+        return (sum(res) // len(res)) if len(res) > 0 else 0
