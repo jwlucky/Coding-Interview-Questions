@@ -1,0 +1,26 @@
+# Solution 1:
+class Solution:
+    def haveConflict(self, event1: List[str], event2: List[str]) -> bool:
+
+        h1, m1 = event1
+        h2, m2 = event2
+        return h2 <= h1 <= m2 or h1 <= h2 <= m1
+
+# Solution 2:
+class Solution:
+    def haveConflict(self, event1: List[str], event2: List[str]) -> bool:
+        start_h1, start_m1 = map(int, event1[0].split(':'))
+        end_h1, end_m1 = map(int, event1[1].split(':'))
+        start_h2, start_m2 = map(int, event2[0].split(':'))
+        end_h2, end_m2 = map(int, event2[1].split(':'))
+        if start_h1 > end_h2 or (start_h1 == end_h2 and start_m1 > end_m2):
+            return False
+        if start_h2 > end_h1 or (start_h2 == end_h1 and start_m2 > end_m1):
+            return False
+        return True
+
+# Solution 3:
+class Solution:
+    def haveConflict(self, event1: List[str], event2: List[str]) -> bool:
+        return False if event1[0] > event2[1] or event2[0] > event1[1] else True
+        
