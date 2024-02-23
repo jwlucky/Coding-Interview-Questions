@@ -1,0 +1,28 @@
+# Solution 1:
+class Solution:
+    def oddString(self, words: List[str]) -> str:
+        alpha = 'abcdefghijklmnopqrstuvwxyz'
+        diff = []
+        for word in words:
+            d = []
+            for i in range(len(word)-1):
+                d.append(alpha.find(word[i+1]) - alpha.find(word[i]))
+            diff.append(d)
+
+        for j in range(len(diff)):
+            if diff.count(diff[j]) == 1:
+                return words[j]
+# Solution 2:
+class Solution:
+    def oddString(self, words: List[str]) -> str:
+        k=len(words[0])
+        arr=[]
+        for i in words:
+            l=[]
+            for j in range(1,k):
+                diff=ord(i[j])-ord(i[j-1])
+                l.append(diff)
+            arr.append(l)
+        for i in range(len(arr)):
+            if arr.count(arr[i])==1:
+                return words[i]
