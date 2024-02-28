@@ -1,0 +1,14 @@
+# Solution 1:
+class Solution:
+    def deleteGreatestValue(self, grid: List[List[int]]) -> int:
+        m, n = len(grid), len(grid[0])
+        sorted_rows = [sorted(row) for row in grid]
+        return sum([max([sorted_rows[i][j] for i in range(m)]) for j in range(n)])
+
+# Solution 2:
+class Solution:
+    def deleteGreatestValue(self, grid: List[List[int]]) -> int:
+        for row in grid:
+            row.sort()
+    
+        return sum([max([grid[i][j] for i in range(len(grid))]) for j in range(len(grid[0]))])
