@@ -1,0 +1,25 @@
+# Solution 1:
+class Solution:
+    def maximumValue(self, strs: List[str]) -> int:
+        ans = []
+        for char in strs:
+            if char.isalpha() == True:
+                ans.append(len(char))
+            elif char.isdigit() == True:
+                ans.append(int(char))
+            else:
+                ans.append(len(char))
+
+        return max(ans)
+# Solution 2:
+class Solution:
+    def maximumValue(self, strs: List[str]) -> int:
+        curr_max = -100000
+
+        for c in strs:
+            if c.isdigit():
+                curr_max = max(curr_max, int(c))
+            else:
+                curr_max = max(curr_max, len(c))
+
+        return curr_max
