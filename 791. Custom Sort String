@@ -1,0 +1,33 @@
+# Solution 1:
+class Solution:
+    def customSortString(self, order: str, s: str) -> str:
+        not_seen = []
+        seen = []
+        for char in s:
+            if char not in order:
+                not_seen.append(char)
+        
+            if char in order:
+                seen.append(order.index(char))
+
+        seen.sort()
+
+        output = []
+        for num in seen:
+            output.append(order[num])
+
+        return ''.join(output + not_seen)
+
+# Solution 2:
+class Solution:
+    def customSortString(self, order: str, s: str) -> str:
+        count = collections.Counter(s)
+        result = []
+
+        for char in order:
+            result.append(char * count.pop(char, 0))
+            
+        for char, cnt in count.items():
+            result.append(char * cnt)
+        # UPVOTE :)
+        return ''.join(result)
