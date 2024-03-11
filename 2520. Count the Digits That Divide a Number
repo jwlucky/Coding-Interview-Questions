@@ -1,0 +1,25 @@
+# Solution 1:
+class Solution:
+    def countDigits(self, num: int) -> int:
+        
+        if num < 10:
+            return 1
+        else:
+            count = 0
+            n = list(str(num))
+            for m in n:
+                if num % int(m) == 0:
+                    count += 1
+            return count
+
+or:
+class Solution:
+    def countDigits(self, num: int) -> int:
+        
+        count = 0
+        n = str(num)
+        for m in n:
+            if num % int(m) == 0:
+                count += 1
+        return count
+
