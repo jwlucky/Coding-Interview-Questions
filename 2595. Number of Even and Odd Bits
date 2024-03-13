@@ -1,0 +1,10 @@
+# My Solution:
+class Solution:
+    def evenOddBit(self, n: int) -> List[int]:
+    
+        b = bin(n)[2:][::-1] # Indices of binary representations start from the right.
+
+        odd_indices = b[1::2]
+        even_indices = b[::2]
+        
+        return [even_indices.count('1'), odd_indices.count('1')]
