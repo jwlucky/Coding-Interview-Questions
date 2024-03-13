@@ -42,4 +42,29 @@ class Solution:
             return left
         else:
             return -1
+
+# Daily Challenge on Mar 13, 2024
+# My solution this time:
+class Solution:
+    def pivotInteger(self, n: int) -> int:
+        nums = [num for num in range(1, n+1)]
+        for i in range(n):
+            if sum(nums[:i+1]) == sum(nums[i:]):
+                return nums[i]
+
+        return -1
+# Good solution I like:
+class Solution:
+    def pivotInteger(self, n: int) -> int:
+        current_sum = 0
+        nums = range(1, n + 1)
+        total_sum = sum(nums)
+        for num in nums:
+            current_sum += num
+            if current_sum == total_sum:
+                return num
+            total_sum -= num
+        
+        return -1
+
         
