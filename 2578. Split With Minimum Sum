@@ -1,0 +1,38 @@
+# My Solution:
+
+class Solution:
+    def splitNum(self, num: int) -> int:
+
+        num = list(str(num))
+        num = [int(n) for n in num if int(n) != 0]
+        num.sort()
+
+        ans = 0
+
+        magic = lambda nums: sum(digit * 10 ** (len(nums) - 1 - i)
+            for i, digit in enumerate(nums))
+
+        odd_nums = num[1::2] # return only the odd indices of the list
+        even_nums = num[::2] # return only the even indices of the list
+        ans = magic(odd_nums) + magic(even_nums)
+
+        return ans
+
+# Other Solutions I like:
+
+# Solution 1:
+class Solution:
+    def splitNum(self, num: int) -> int:
+        num=list(str(num))
+        num.sort()
+        n1=""
+        n2=""
+        for i in range(len(num)):
+            if i%2==0:
+                n1+=num[i]
+            else:
+                n2+=num[i]
+        return int(n1)+int(n2)
+
+        
+
