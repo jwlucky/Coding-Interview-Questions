@@ -34,3 +34,6 @@ class Solution:
     def distinctIntegers(self, n: int) -> int:
         return max(1, n-1)
             
+# Explaination:
+# No matter how big n is, n % (n - 1) always yields 1. So recursively speaking, we can always find n - 1, n - 2, n - 3, ..., down to 1.
+# We just need to handle the corner case where n = 1.
