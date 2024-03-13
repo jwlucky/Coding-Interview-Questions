@@ -1,0 +1,26 @@
+# My Solution:
+class Solution:
+    def passThePillow(self, n: int, time: int) -> int:
+        ans = 0
+        m = [num for num in range(1, n + 1)]
+
+        if time < n:
+            ans = time + 1
+        elif time == n:
+            ans = time - 1
+        else:
+            circle = time // (n-1)
+            module = time % (n-1)
+            if circle % 2 == 0:
+                ans = m[module]
+            else:
+                ans = m[-module-1]
+        return ans
+# Other people's solutions I like:
+class Solution:
+    def passThePillow(self, n: int, time: int) -> int:
+        cel: int = time // (n - 1)
+        ost: int = time % (n - 1)
+        print(cel, ost)
+        return n - ost if cel % 2 else ost + 1
+        
