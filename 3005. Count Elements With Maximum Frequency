@@ -1,0 +1,10 @@
+# My Solution:
+class Solution:
+    def maxFrequencyElements(self, nums: List[int]) -> int:
+        n = Counter(nums)
+        v = list(n.values())
+        m = max(v)
+        number = v.count(m)
+
+
+        return m * number
