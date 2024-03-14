@@ -1,0 +1,37 @@
+# My Solution:
+# Memory Limit Exceeded
+import itertools
+class Solution:
+    def numSubarraysWithSum(self, nums: List[int], goal: int) -> int:
+        def allSubArrays(xs):
+            n = len(xs)
+            indices = list(range(n+1))
+            for i,j in itertools.combinations(indices,2):
+                yield xs[i:j]
+        
+        
+        a = list(allSubArrays(nums))
+        count = 0
+        for i in range(len(a)):
+            if sum(a[i]) == goal:
+                count += 1
+        return count
+
+# Other people's awesome solutions:
+# Solution 1:
+class Solution:
+    def numSubarraysWithSum(self, nums: List[int], goal: int) -> int:
+        count = {0: 1}
+        curr_sum = 0
+        total_subarrays = 0
+        
+        for num in nums:
+            curr_sum += num
+            if curr_sum - goal in count:
+                total_subarrays += count[curr_sum - goal]
+            count[curr_sum] = count.get(curr_sum, 0) + 1
+
+        return total_subarrays
+# I don't fully understand his solution
+
+
