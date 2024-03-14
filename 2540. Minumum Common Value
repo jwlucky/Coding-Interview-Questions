@@ -1,0 +1,19 @@
+# My Solution:
+class Solution:
+    def getCommon(self, nums1: List[int], nums2: List[int]) -> int:
+
+        # Runtime error:
+        # return min(set(nums1).intersection(set(nums2)))
+
+        # Time Limit Error:
+        # c = []
+        # for num in nums1:
+        #     if num in nums2:
+        #         c.append(num)
+        # return min(c)
+        def findMin(A, B, default=-1):
+            return min(set(A).intersection(B), default=default)
+        
+        return findMin(nums1, nums2)
+
+
