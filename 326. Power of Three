@@ -1,0 +1,30 @@
+# Solution 1:
+class Solution:
+    def isPowerOfThree(self, n: int) -> bool:
+        if n <= 0:
+            return False
+        while n != 1:
+            if n % 3 != 0:
+                return False
+            n = n // 3
+        else:
+            return True
+
+# Solution 2:
+class Solution:
+    def isPowerOfThree(self, n: int) -> bool:
+        if n == 0:
+            return False
+        elif n == 1:
+            return True
+        elif n % 3 != 0:
+            return False
+        else:
+            return self.isPowerOfThree(n // 3)
+
+# Solution 3:
+class Solution:
+    def isPowerOfThree(self, n: int) -> bool:
+        if n<=0:
+            return bool(0)
+        return (log10(n)/log10(3)) % 1 == 0
