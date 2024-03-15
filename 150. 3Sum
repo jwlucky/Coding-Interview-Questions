@@ -1,0 +1,16 @@
+# My Solution:
+# Memory Limit Exceeded 
+# 308 / 313 testcases passed
+import itertools
+class Solution:
+    def threeSum(self, nums: List[int]) -> List[List[int]]:
+        nums.sort()
+        output = []
+        c = list(itertools.combinations(nums, 3))
+
+        for sub in c:
+            if sum(list(sub)) == 0:
+                if list(sub) not in output:
+                    output.append(list(sub))
+
+        return output
