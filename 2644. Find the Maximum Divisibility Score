@@ -1,0 +1,32 @@
+# Solution 1:
+class Solution:
+    def maxDivScore(self, nums: List[int], divisors: List[int]) -> int:
+        res = 0 
+        count = -1
+        for d in divisors:
+            curr = sum(1 for i in nums if i%d == 0)
+            if curr > count:
+                count = curr
+                res = d
+            elif curr == count:
+                res = min(res, d)
+        return res
+
+
+# python float('inf') --- It acts as an unbounded upper value for comparison. This is useful for finding lowest values for something. for example, calculating path route costs when traversing trees.
+# Solution 2:
+class Solution:
+    def maxDivScore(self, nums: List[int], divisors: List[int]) -> int:
+        max_score = -1
+        min_divisor = float('inf')
+        
+        for divisor in divisors:
+            count = 0
+            for num in nums:
+                if num % divisor == 0:
+                    count += 1
+            if count > max_score or (count == max_score and divisor < min_divisor):
+                max_score = count
+                min_divisor = divisor
+        
+        return min_divisor
