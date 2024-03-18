@@ -1,0 +1,32 @@
+# Memory Limit Exceeded
+class Solution:
+    def kItemsWithMaximumSum(self, numOnes: int, numZeros: int, numNegOnes: int, k: int) -> int:
+        bags = [1] * numOnes + [0] * numZeros + [-1] * numNegOnes
+        s = list(set(list(itertools.combinations(bags, k))))
+        ss = [sum(list(l)) for l in s]
+        return max(ss)
+# Passed Solution:
+class Solution:
+    def kItemsWithMaximumSum(self, numOnes: int, numZeros: int, numNegOnes: int, k: int) -> int:
+        ans = 0
+        if k <= numOnes:
+            ans = k
+        elif numOnes + numZeros >= k > numOnes:
+            ans = numOnes
+        elif k > numOnes + numZeros:
+            ans = numOnes - (k - numOnes - numZeros) 
+        return ans
+
+
+Hint 1
+It is always optimal to take items with the number 1 written on them as much as possible.
+Hint 2
+If k > numOnes, after taking all items with the number 1, it is always optimal to take items with the number 0 written on them as much as possible.
+Hint 3
+If k > numOnes + numZeroes we are forced to take k - numOnes - numZeroes -1s.
+
+# Solution 2:
+class Solution:
+    def kItemsWithMaximumSum(self, numOnes: int, numZeros: int, numNegOnes: int, k: int) -> int:
+        bags = [1]*numOnes + [0]*numZeros + [-1]*numNegOnes
+        return sum(bags[:k])
