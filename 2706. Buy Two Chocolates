@@ -1,0 +1,9 @@
+class Solution:
+    def buyChoco(self, prices: List[int], money: int) -> int:
+        
+        prices.sort()
+        cheap_two = sum(prices[:2])
+        if money >= cheap_two:
+            return money - cheap_two
+        else:
+            return money
