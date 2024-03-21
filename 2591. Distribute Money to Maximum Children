@@ -1,0 +1,47 @@
+# Solution 1:
+class Solution:
+    def distMoney(self, money: int, children: int) -> int:
+        if money < children:
+            return -1
+
+        money -= children
+        q, r = divmod(money, children)
+        if q == 7:
+            if r == 0: 
+                return children
+            else:
+                return children -1
+        elif q > 7:
+            return children -1
+        else:
+            q_, r_ = divmod(money, 7)
+            if r_ == 0:
+                return q_
+            elif r_ == 3:
+                if children == q_ + 1:
+                    return q_ - 1
+                else:
+                    return q_
+            else:
+                return q_
+# Solution 2:
+class Solution:
+    def distMoney(self, money: int, children: int) -> int:
+       # everyone receives 1 dollar
+       money -= children
+       if money < 0:
+           return -1
+
+       count7 = money // 7
+       remaining = money % 7
+
+       # distribute money to every child
+
+       # nice case
+       if count7 == children and remaining ==0:
+           return count7     
+       # last child with 4 dollars
+       if count7 == children - 1 and remaining == 3:
+           return count7 - 1 
+       # 
+       return min(children - 1, count7)    
