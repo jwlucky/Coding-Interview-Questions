@@ -1,0 +1,31 @@
+# Solution 1:
+class Solution:
+    def distanceTraveled(self, mainTank: int, additionalTank: int) -> int:
+
+        distance = 0
+        while mainTank > 0:
+            if mainTank >= 5:
+                mainTank -= 5
+                distance += 5 * 10
+                if additionalTank >= 1:
+                    additionalTank -= 1
+                    mainTank += 1
+            if mainTank < 5:
+                distance += mainTank * 10
+                mainTank = 0                    
+        return distance
+# Solution 2:
+class Solution:
+    def distanceTraveled(self, mainTank: int, additionalTank: int) -> int:
+        totalLiters = 0
+        while mainTank:
+            if mainTank<5:
+                totalLiters+=mainTank
+                return totalLiters*10
+            totalLiters+=5
+            mainTank-=5
+            if additionalTank:
+                mainTank+=1
+                additionalTank-=1
+        return totalLiters*10
+            
