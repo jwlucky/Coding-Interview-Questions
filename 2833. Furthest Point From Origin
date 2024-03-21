@@ -1,0 +1,37 @@
+# Solution 1:
+class Solution:
+    def furthestDistanceFromOrigin(self, moves: str) -> int:
+        steps = 0
+        n = len(moves)
+        
+        if moves.count('_') == n:
+            steps = n
+        elif moves.count('L') == n:
+            steps = n
+        elif moves.count('R') == n:
+            steps = n
+        
+        if '_' not in moves:
+            steps = abs(moves.count('L') - moves.count('R'))
+        if '_' in moves:
+            if moves.count('L') >= moves.count('R'):
+                steps = moves.count('L') + moves.count('_') - moves.count('R')
+            elif moves.count('L') < moves.count('R'):
+                steps = moves.count('R') + moves.count('_') - moves.count('L')
+        return steps
+
+# Solution 2:
+class Solution:
+    def furthestDistanceFromOrigin(self, moves: str) -> int:
+        num_l = moves.count("L")
+        num_r = moves.count("R")
+
+        if num_l > num_r:
+            moves = moves.replace("_",  "L")
+        else:
+            moves = moves.replace("_",  "R")
+
+        num_l = moves.count("L")
+        num_r = moves.count("R")
+
+        return abs(num_r - num_l)
