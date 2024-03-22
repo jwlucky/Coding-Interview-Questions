@@ -1,0 +1,30 @@
+# Solution 1:
+class Solution:
+    def splitWordsBySeparator(self, words: List[str], separator: str) -> List[str]:
+        
+        ans = []
+        for word in words:
+            word = word.split(separator)
+            ans.append(word)
+
+        output = [x for l in ans for x in l if x != ''] # unpack list of lists
+        return output
+
+# Solution 2:
+class Solution:
+    def splitWordsBySeparator(self, words: List[str], separator: str) -> List[str]:
+        r=[]
+        for word in words:
+            splits=word.split(separator)
+            for s in splits:
+                if s:
+                 r.append(s)
+        return r
+
+# Solution 3:
+class Solution:
+    def splitWordsBySeparator(self, words: List[str], separator: str) -> List[str]:
+        result = []
+        for word in words:
+            result.extend(filter(None, word.split(separator)))
+        return result
