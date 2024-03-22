@@ -1,0 +1,29 @@
+# Easy to understand solution:
+class Solution:
+    def finalString(self, s: str) -> str:
+        forward = collections.deque()
+        backward = collections.deque()
+
+        for char in s:
+            if char != 'i':
+                forward.append(char)
+                backward.appendleft(char)
+            else:
+                forward, backward = backward, forward
+
+        return "".join(forward)
+
+# High level solution that I don't fully understand
+class Solution:
+    def finalString(self, s: str) -> str:
+        num_of_i = s.count('i')
+        if not num_of_i: return s
+
+        res = [''] * (len(s) - num_of_i)
+        st, end, num_of_i = 0, len(res) -1, 1
+
+        for i in range(len(s)-1, -1 , -1):
+            if s[i] == 'i': num_of_i ^= 1
+            elif num_of_i: res[end], end = s[i], end -1
+            else: res[st], st = s[i], st + 1
+        return ''.join(res)
