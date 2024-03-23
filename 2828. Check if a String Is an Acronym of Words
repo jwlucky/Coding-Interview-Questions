@@ -1,0 +1,12 @@
+# Solution 1:
+class Solution:
+    def isAcronym(self, words: List[str], s: str) -> bool:
+        brief = []
+        for word in words:
+            brief.append(word[0])
+
+        return ''.join(brief) == s
+# Solution 2:
+class Solution:
+    def isAcronym(self, words: List[str], s: str) -> bool:
+        return s==''.join(words[i][0] for i in range(len(words)))
