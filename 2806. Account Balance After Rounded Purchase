@@ -1,0 +1,26 @@
+# Solution 1:
+class Solution:
+    def accountBalanceAfterPurchase(self, purchaseAmount: int) -> int:
+        
+        if purchaseAmount < 5:
+            return 100
+        elif 5 <= purchaseAmount <= 10:
+            return 100 - 10
+        else:
+            if purchaseAmount % 10 == 0:
+                return 100 - purchaseAmount
+            elif 0 < purchaseAmount % 10 < 5:
+                return 100 - purchaseAmount // 10 * 10
+            elif 5 <= purchaseAmount % 10 <= 9: 
+                return 100 - purchaseAmount // 10 * 10 - 10
+
+# Solution 2:
+class Solution:
+    def accountBalanceAfterPurchase(self, purchaseAmount: int) -> int:
+        rem = purchaseAmount % 10
+        if rem < 5:
+            purchaseAmount = purchaseAmount - rem
+        else:
+            purchaseAmount = purchaseAmount + (10 - rem)
+
+        return 100 - purchaseAmount
