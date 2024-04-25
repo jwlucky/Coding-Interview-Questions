@@ -1,0 +1,18 @@
+# My Solution 1:
+class Solution:
+    def closetTarget(self, words: List[str], target: str, startIndex: int) -> int:
+        if target not in words:
+            return -1
+
+        w = words + words
+        indices = [i for i in range(len(w)) if w[i] == target]
+        a = []
+        
+        second_startIndex = startIndex + len(words)
+
+        for num in indices:
+            a.append(abs(num - startIndex))
+            a.append(abs(num - second_startIndex))
+
+        return min(a)
+            
