@@ -16,3 +16,17 @@ class Solution:
 
         return min(a)
             
+# Other Solutions:
+class Solution:
+    def closetTarget(self, words: List[str], target: str, startIndex: int) -> int:
+        res, n = 0, len(words)
+        if target not in words:
+            return -1
+        i = 0
+        while i<len(words):
+            if words[(startIndex+i)%n]==target or words[(startIndex-i+n)%n]==target:
+                return res
+            res+=1
+            i+=1
+        
+            
