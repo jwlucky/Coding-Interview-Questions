@@ -6,3 +6,30 @@ class Solution:
             c = ord(c) - ord('a')
             f[c] = 1 + max(f[max(c - k, 0): c + k + 1])
         return max(f)
+# Solution 2:
+class Solution:
+
+
+    def longestIdealString(self, s: str, k: int) -> int:
+        # dynamic program
+        # for each letter, find next letter within k, and get subsequence from there + 1
+
+        # going backwards, subsequence of last letter is itself
+        #
+
+        N = len(s)
+        dp = [0] * 26
+
+        res = 0
+        # Updating dp with the i-th character
+        for i in range(N):
+            curr = ord(s[i]) - ord('a')
+            best = 0
+            for prev in range(26):
+                if abs(prev - curr) <= k:
+                    best = max(best, dp[prev])
+
+            # Append s[i] to the previous longest ideal subsequence
+            dp[curr] = max(dp[curr], best + 1)
+            res = max(res, dp[curr])
+        return res
