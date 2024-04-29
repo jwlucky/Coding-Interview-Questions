@@ -1,0 +1,16 @@
+# Solution 1:
+class Solution:
+    def findFinalValue(self, nums: List[int], original: int) -> int:
+        while original in nums:
+            original = 2 * original
+            continue
+        else:
+            return original
+# Solution 2:
+class Solution:
+    def findFinalValue(self, nums: List[int], original: int) -> int:
+
+        while original in set(nums):
+            original *= 2
+        return original
+        
