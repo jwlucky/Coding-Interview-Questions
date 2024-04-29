@@ -1,0 +1,35 @@
+# Solution 1:
+class Solution:
+    def checkValid(self, matrix: List[List[int]]) -> bool:
+        n = len(matrix)
+        for i in range(n):
+            if len(set(matrix[i]))!=n:
+                return False
+            temp = set()
+            for j in range(n):
+                temp.add(matrix[j][i])
+            if len(temp)!=n:
+                return False
+        return True
+
+# Solution 2:
+
+class Solution:
+    def checkValid(self, matrix: List[List[int]]) -> bool:
+        nums = list(range(1, len(matrix)+1))
+        for row in matrix:
+            row_ = row[:]
+            row_.sort()
+            if row_ != nums:
+                return False
+        
+        matrix = list(map(list, zip(*matrix)))
+        for row in matrix:
+            row.sort()
+            if row != nums:
+                return False
+        
+        return True
+
+        
+        
