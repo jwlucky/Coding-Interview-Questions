@@ -1,0 +1,46 @@
+# My Solution:
+class Solution:
+    def captureForts(self, forts: List[int]) -> int:
+        # base case: no position under my command
+        if 1 not in forts:
+            return 0
+
+        enemy = []
+        for i in range(len(forts)-1):
+            for j in range(i, len(forts)):
+                # find the continuous number of 0s between 1 and -1
+                if abs(forts[i]) == 1 and forts[i] == -forts[j]:
+                    if forts[i:j+1].count(0) == j-i-1 and j-i-1 != 0:
+                        enemy.append(forts[i:j+1].count(0))
+                        break
+        return max(enemy) if len(enemy) != 0 else 0
+
+# Other solutions:
+# 1:
+class Solution:
+    def captureForts(self, forts: List[int]) -> int:
+        left, right = 0, 0
+        captured = 0
+        while right < len(forts):
+            while left < len(forts) and forts[left] == 0:
+                left += 1
+                right = left
+            
+            if right < len(forts) and forts[right] != 0: 
+                if forts[right] != forts[left]:
+                    
+                    captured = max(captured, right - left-1)
+                left = right
+            right += 1
+        return captured        
+# 2:
+class Solution:
+    def captureForts(self, forts: List[int]) -> int:
+        res = 0
+        l = 0
+        for i in range(len(forts)):
+            if forts[i]:
+                if forts[l] == -forts[i]:
+                    res = max(res , i - l-1)
+                l = i
+        return res
