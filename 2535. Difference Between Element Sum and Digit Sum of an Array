@@ -1,0 +1,22 @@
+# Solution 1:
+class Solution:
+    def differenceOfSum(self, nums: List[int]) -> int:
+        
+        e = sum(nums)
+        d = 0
+        for num in nums:
+            num = [int(n) for n in str(num)]
+            d += sum(num)
+
+        return abs(e - d)
+
+
+# Solution 2:
+class Solution:
+    def differenceOfSum(self, nums: List[int]) -> int:
+        digitsum=0
+        for i in nums:
+            while i:
+                digitsum+=i%10
+                i//=10
+        return sum(nums)-digitsum
