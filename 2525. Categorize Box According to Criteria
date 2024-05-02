@@ -1,0 +1,35 @@
+# Solution 1:
+class Solution:
+    def categorizeBox(self, length: int, width: int, height: int, mass: int) -> str:
+        v = length * width * height
+        d = [length, width, height]
+        output = ''
+
+        if max(d) >= 10000 or v >= 1000000000:
+            output = 'Bulky'
+            if 1000000000 > mass >= 100:
+                output = 'Both'
+        elif 1000000000 > mass >= 100:
+            output = 'Heavy'
+            if max(d) >= 10000 or v >= 1000000000:
+                output = 'Both'
+        else:
+            output = 'Neither'
+        return output
+
+# Solution 2:
+class Solution:
+    def categorizeBox(self, length: int, width: int, height: int, mass: int) -> str:
+        v = length * width * height
+        d = [length, width, height]
+        Bulky = max(d) >= 10000 or v >= 1000000000
+        Heavy = mass >= 100
+
+        if Bulky and Heavy:
+            return 'Both'
+        elif Heavy and not Bulky:
+            return 'Heavy'
+        elif not Heavy and Bulky:
+            return 'Bulky'
+        else:
+            return 'Neither'
