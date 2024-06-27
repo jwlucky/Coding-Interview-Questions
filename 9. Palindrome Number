@@ -1,0 +1,18 @@
+# Solution 1
+class Solution:
+    def isPalindrome(self, x: int) -> bool:
+        def int_str_int(number):
+            number = int(str(number)[::-1])
+            return number
+        
+        return x == int_str_int(x) if x >= 0 else False
+
+# Solution 2:
+class Solution:
+    def isPalindrome(self, x: int) -> bool:
+        x = str(x)
+
+        if x == x[::-1]:
+            return True
+        else:
+            return False
