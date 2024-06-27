@@ -1,0 +1,19 @@
+# Solution 1:
+class Solution:
+    def longestCommonPrefix(self, strs: List[str]) -> str:
+        prefix_len = len(strs[0])
+        for x in strs[1:]:
+            prefix_len = min(prefix_len, len(x)) # first determine prefix_len's length is the shortest one in strs
+            while not x.startswith(strs[0][:prefix_len]): # if any in strs not start with this length string, string length -1, continue
+                prefix_len -= 1
+        return strs[0][:prefix_len] # return common prefix
+
+# Solution 2:
+class Solution:
+    def longestCommonPrefix(self, strs: List[str]) -> str:
+        mini,maxi=min(strs),max(strs)
+
+        for i in range(len(mini)):
+            if mini[i]!=maxi[i]:
+                return mini[:i]
+        return mini
