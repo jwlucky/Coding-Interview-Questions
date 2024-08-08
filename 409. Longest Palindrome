@@ -1,0 +1,60 @@
+# Solution 1:
+class Solution:
+    def longestPalindrome(self, s: str) -> int:
+        ss = list(Counter(s).values())
+        num = 0
+        odd_n = []
+
+        # if a letter in a string is even number, it is palindrome.
+        for n in ss:
+            if n % 2 == 0:
+                num += n
+            else:
+                odd_n.append(n)
+
+        odd_n.sort(reverse = True)
+
+        if len(odd_n) == 0:
+            return num
+        # the longest odd number letter can be put in the middle; 
+        # odd number - 1 is even number;
+        # if the last number in odd_n list is 1, we eliminate it.
+        elif len(odd_n) == 1:
+            return num + odd_n[0]
+        else:
+            num += odd_n[0]
+            if odd_n[-1] == 1:
+                odd_n = odd_n[1:-1]
+                num += sum(odd_n) - len(odd_n)
+            else:
+                odd_n = odd_n[1:]
+                num += sum(odd_n) - len(odd_n) 
+            return num
+# Solution 2:
+class Solution:
+    def longestPalindrome(self, s: str) -> int:
+        count = Counter(s)
+        ans = 0
+        odd = 0
+        for _,val in count.items():
+            ans+=val//2
+            odd = odd or val%2
+        return ans*2 + odd
+
+# Solution 3:
+class Solution:
+    def longestPalindrome(self, s: str) -> int:
+        char_count = defaultdict(int)
+        res = 0
+
+        for char in s:
+            char_count[char] += 1 
+            if char_count[char] % 2 == 0: 
+                res += 2 
+
+        for value in char_count.values():
+            if value % 2 == 1:
+                res += 1
+                break
+
+        return res
